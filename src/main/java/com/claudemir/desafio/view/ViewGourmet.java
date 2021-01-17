@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.claudemir.desafio.service.ServicePrato;
@@ -17,10 +18,15 @@ import com.claudemir.desafio.service.ServicePrato;
  * @author Marcos Felipe
  */
 @Component
-public class ViewGourmet {
+public class ViewGourmet extends JFrame {
+	
+	private static final long serialVersionUID = 1L;
+	
+	@Autowired
+	ServicePrato service;
+	
+	public ViewGourmet() {
 
-	public static JFrame getFramePrincipal(ServicePrato control) {
-		JFrame frame;
 		JLabel startLabel = new JLabel("Pense em um prato que você gosta.");
 		startLabel.setBounds(55, 50, 280, 50);
 		JButton startButton = new JButton("OK");
@@ -28,19 +34,17 @@ public class ViewGourmet {
 
 		startButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				control.iniciarRecursao();
+				service.iniciarRecursao();
 			}
 		});
 
-		frame = new JFrame("Jogo Gourmet");
-		frame.add(startButton);
-		frame.add(startLabel);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(330, 220);
-		frame.setLayout(null);
-		frame.setLocationRelativeTo(null);
-
-		return frame;
+		this.setTitle("Jogo Gourmet");
+		this.add(startButton);
+		this.add(startLabel);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setSize(330, 220);
+		this.setLayout(null);
+		this.setLocationRelativeTo(null);
 	}
 
 	public static void showAcertei() {
