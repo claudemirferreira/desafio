@@ -13,19 +13,15 @@ import org.springframework.stereotype.Component;
 
 import com.claudemir.desafio.service.ServicePrato;
 
-/**
- *
- * @author Marcos Felipe
- */
 @Component
-public class ViewGourmet extends JFrame {
+public class JFrameGourmet extends JFrame {
 	
 	private static final long serialVersionUID = 1L;
 	
 	@Autowired
 	ServicePrato service;
 	
-	public ViewGourmet() {
+	public JFrameGourmet() {
 
 		JLabel startLabel = new JLabel("Pense em um prato que você gosta.");
 		startLabel.setBounds(55, 50, 280, 50);

@@ -4,19 +4,14 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 
-import com.claudemir.desafio.service.ServicePrato;
-import com.claudemir.desafio.view.ViewGourmet;
+import com.claudemir.desafio.view.JFrameGourmet;
 
 @SpringBootApplication
 public class DesafioApplication extends JFrame {
 	private static final long serialVersionUID = 1L;
-	
-	@Autowired
-	ServicePrato service;
 
 	public DesafioApplication() {
 	}
@@ -26,7 +21,7 @@ public class DesafioApplication extends JFrame {
 		EventQueue.invokeLater(() -> {
 			var ex = ctx.getBean(DesafioApplication.class);
 			ex.setVisible(true);
-			JFrame principal = ctx.getBean(ViewGourmet.class);
+			JFrame principal = ctx.getBean(JFrameGourmet.class);
 			principal.setVisible(true);
 		});
 	}

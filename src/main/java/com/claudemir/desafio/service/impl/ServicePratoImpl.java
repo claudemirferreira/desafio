@@ -4,7 +4,7 @@ import org.springframework.stereotype.Service;
 
 import com.claudemir.desafio.model.Prato;
 import com.claudemir.desafio.service.ServicePrato;
-import com.claudemir.desafio.view.ViewGourmet;
+import com.claudemir.desafio.view.JFrameGourmet;
 
 @Service
 public class ServicePratoImpl implements ServicePrato {
@@ -14,13 +14,9 @@ public class ServicePratoImpl implements ServicePrato {
 	private final int NAO = 1;
 
 	public ServicePratoImpl() {
-		inicio = init();
-	}
-
-	public Prato init() {
 		Prato lasanha = new Prato("Lasanha", null, null);
 		Prato bolo = new Prato("Bolo de Chocolate", null, null);
-		return new Prato("Massa", lasanha, bolo);
+		this.inicio = new Prato("Massa", lasanha, bolo);
 	}
 
 	public void iniciarRecursao() {
@@ -31,13 +27,13 @@ public class ServicePratoImpl implements ServicePrato {
 
 	public Prato proximo(Prato atual) {
 		System.out.println("Método proximo INÍCIO, atual = " + atual.getNome());
-		int escolha = ViewGourmet.showPerguntaPrato(atual.getNome());
+		int escolha = JFrameGourmet.showPerguntaPrato(atual.getNome());
 		System.out.println(escolha);
 		Prato novoRamo;
 		switch (escolha) {
 		case SIM:
 			if (atual.getSim() == null) {
-				ViewGourmet.showAcertei();
+				JFrameGourmet.showAcertei();
 				novoRamo = null;
 			} else {
 				novoRamo = proximo(atual.getSim());
@@ -66,7 +62,7 @@ public class ServicePratoImpl implements ServicePrato {
 	}
 
 	public Prato newPrato(Prato atual) {
-		String nome = ViewGourmet.showPerguntaNewPrato();
+		String nome = JFrameGourmet.showPerguntaNewPrato();
 		System.out.println(nome);
 
 		if (nome != null) {
@@ -78,7 +74,7 @@ public class ServicePratoImpl implements ServicePrato {
 				novo.setSim(null);
 				novo.setNao(null);
 
-				String difEntreNovoEAtualDescricao = ViewGourmet.showPerguntaDiferenca(nome, atual.getNome());
+				String difEntreNovoEAtualDescricao = JFrameGourmet.showPerguntaDiferenca(nome, atual.getNome());
 				System.out.println(difEntreNovoEAtualDescricao);
 
 				Prato difEntreNovoEAtual = new Prato();
