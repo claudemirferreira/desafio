@@ -1,42 +1,45 @@
 package com.claudemir.desafio.model;
 
-public class Prato {
-	
-	private String nome;
-    private Prato sim;
-    private Prato nao;
-    
-    public Prato() {
-    }
-    
-    public Prato(String nome, Prato sim, Prato nao) {
-		this.nome = nome;
+public class Prato extends GenericModel {
+
+	private static final long serialVersionUID = 1L;
+
+	private Prato sim;
+
+	private Prato nao;
+
+	public Prato() {
+	}
+
+	public Prato(String nome) {
+		super(nome);
+	}
+
+	public Prato(Prato sim, Prato nao) {
 		this.sim = sim;
 		this.nao = nao;
 	}
 
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
+	public Prato(String nome, Prato sim, Prato nao) {
+		super(nome);
+		this.sim = sim;
+		this.nao = nao;
 	}
 
 	public Prato getSim() {
-        return sim;
-    }
+		return sim;
+	}
 
-    public void setSim(Prato sim) {
-        this.sim = sim;
-    }
+	public void setSim(Prato sim) {
+		this.sim = sim;
+	}
 
-    public Prato getNao() {
-        return nao;
-    }
+	public Prato getNao() {
+		return nao;
+	}
 
-    public void setNao(Prato nao) {
-        this.nao = nao;
-    }
+	public void setNao(Prato nao) {
+		this.nao = nao;
+	}
 
 }

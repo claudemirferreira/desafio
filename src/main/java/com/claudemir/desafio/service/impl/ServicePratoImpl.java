@@ -14,8 +14,8 @@ public class ServicePratoImpl implements ServicePrato {
 	private final int NAO = 1;
 
 	public ServicePratoImpl() {
-		Prato lasanha = new Prato("Lasanha", null, null);
-		Prato bolo = new Prato("Bolo de Chocolate", null, null);
+		Prato lasanha = new Prato("Lasanha");
+		Prato bolo = new Prato("Bolo de Chocolate");
 		this.inicio = new Prato("Massa", lasanha, bolo);
 	}
 
@@ -25,7 +25,7 @@ public class ServicePratoImpl implements ServicePrato {
 		System.out.println("FIM DE RECURSAO");
 	}
 
-	public Prato proximo(Prato atual) {
+	private Prato proximo(Prato atual) {
 		System.out.println("Método proximo INÍCIO, atual = " + atual.getNome());
 		int escolha = JFrameGourmet.showPerguntaPrato(atual.getNome());
 		System.out.println(escolha);
@@ -61,14 +61,14 @@ public class ServicePratoImpl implements ServicePrato {
 		return novoRamo;
 	}
 
-	public Prato newPrato(Prato atual) {
+	private Prato newPrato(Prato atual) {
 		String nome = JFrameGourmet.showPerguntaNewPrato();
 		System.out.println(nome);
 
 		if (nome != null) {
 			nome = nome.trim();
 			if (!nome.equals("")) {
-				System.out.println("CRIAR NOVO RAMO");
+				System.out.println("CRIAR NOVO PRATO");
 				Prato novo = new Prato();
 				novo.setNome(nome);
 				novo.setSim(null);
